@@ -6,11 +6,11 @@
 #    By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/09 02:59:52 by dbauduin          #+#    #+#              #
-#    Updated: 2018/08/09 02:59:59 by dbauduin         ###   ########.fr        #
+#    Updated: 2018/08/11 02:35:25 by dbauduin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-OBJ = $(addsuffix .o, $(addprefix obj/, main get_anthill run tools))
+OBJ = $(addsuffix .o, $(addprefix obj/, main get_anthill run ))
 OBJ_W ?= $(shell find obj | grep \\.o$)
 
 NAME = lem-in
