@@ -6,7 +6,7 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 03:00:07 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/08/11 02:40:06 by dbauduin         ###   ########.fr       */
+/*   Updated: 2018/08/11 06:30:01 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static char		**get_box(t_lemin *lemin, char **line)
             spe = 1 + !ft_strcmp(*line++, "##end");
 		split = ft_strsplit(*line, ' ');
         /*Verife format 2 ' ' et pas de L*/
-		if (!*line || ft_strcount(*line, ' ') != 2 || **line == 'L' || ft_parrlen((void**)(split = ft_strsplit(*line, ' '))) != 3 || ft_strchr(*line, '-'))
+		if (!*line || ft_strcount(*line, ' ') != 2 || **line == 'L' || ft_parrlen((void**)(split = ft_strsplit(*line, ' '))) != 3 || ft_strchr(split[0], '-'))
 			break ;
 		box = (t_box*)ft_memalloc(sizeof(t_box));
 		box->name = ft_strdup(split[0]);
