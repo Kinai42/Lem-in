@@ -6,7 +6,7 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 03:01:32 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/08/09 03:01:34 by dbauduin         ###   ########.fr       */
+/*   Updated: 2018/08/13 15:33:26 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,7 @@ void				solve(t_lemin *lemin);
 void				run(t_lemin *lemin);
 t_box				**convert_path(t_lemin *lemin, char **path);
 char				**skip_coms(char **lines);
+t_box    *ft_mallocbox(char **split);
+void ft_free(t_box *box, char **split);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 03:00:16 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/08/11 02:35:01 by dbauduin         ###   ########.fr       */
+/*   Updated: 2018/08/13 15:38:02 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,24 @@ char		**skip_coms(char **lines)
 	while (*lines && **lines == '#' && *(*lines + 1) != '#')
 		lines++;
 	return (lines);
+}
+
+t_box    *ft_mallocbox(char **split)
+{
+    t_box *box;
+
+    box = (t_box*)(ft_memalloc(sizeof(t_box)));
+    box->name = ft_strdup(split[0]);
+    box->x = ft_atoi(split[1]);
+    box->y = ft_atoi(split[2]);
+    box->pipes = (t_box**)ft_parrnew();
+    return (box);
+}
+
+void ft_free(t_box *box, char **split)
+{
+            free(box->name);
+            free(box);
+            ft_parrfree((void **)box->pipes);
+            ft_parrfree((void **)split);
 }
