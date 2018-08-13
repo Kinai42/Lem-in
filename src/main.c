@@ -6,7 +6,7 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 03:00:16 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/08/13 15:38:02 by dbauduin         ###   ########.fr       */
+/*   Updated: 2018/08/13 17:41:28 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_box    *ft_mallocbox(char **split)
 void ft_free(t_box *box, char **split)
 {
             free(box->name);
-            free(box);
             ft_parrfree((void **)box->pipes);
+            free(box);
             ft_parrfree((void **)split);
 }

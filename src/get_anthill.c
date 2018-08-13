@@ -6,7 +6,7 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 03:00:07 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/08/13 15:37:07 by dbauduin         ###   ########.fr       */
+/*   Updated: 2018/08/13 17:40:36 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static char		check(t_lemin *lemin, char **lines, long offset)
         ft_parrfree((void**)lines);
         return (0);
     }
+
     lemin->nbPaths = ft_parrlen((void**)lemin->start->pipes);
     if (ft_parrlen((void**)lemin->end->pipes) < lemin->nbPaths)
         lemin->nbPaths = ft_parrlen((void**)lemin->end->pipes);
@@ -43,25 +44,26 @@ static char		**get_pipe(t_lemin *lemin, char **line)
     char	**split;
     int		i;
     int		j;
-
+    
     line = skip_coms(line);
     while (*line)
     {
-        if (ft_strcount(*line, '-') != 1 || ft_parrlen((void**)(split = ft_strsplit(*line, '-'))) != 2 || !ft_strcmp(split[0], split[1]))
+        if (ft_strcount(*line, '-') != 1 || ft_parrlen((void**)(split = 
+            ft_strsplit(*line, '-'))) != 2 || !ft_strcmp(split[0], split[1]))
             break ;
-        i = 0;
-        while (lemin->box[i] && ft_strcmp(lemin->box[i]->name, split[0]))
-            i++;
-        j = 0;
-        while (lemin->box[j] && ft_strcmp(lemin->box[j]->name, split[1]))
-            j++;
-        ft_parrfree((void**)split);
+        i = -1;
+        while (lemin->box[++i] && ft_strcmp(lemin->box[i]->name, split[0]));
+        j = -1;
+        while (lemin->box[++j] && ft_strcmp(lemin->box[j]->name, split[1]));
         if (!lemin->box[i] || !lemin->box[j])
             break ;
         ft_parrpush((void***)&lemin->box[i]->pipes, lemin->box[j]);
         ft_parrpush((void***)&lemin->box[j]->pipes, lemin->box[i]);
+        ft_parrfree((void**)split);
         line = skip_coms(++line);
     }
+    if(*line && ft_strcount(*line, '-') == 1)
+        ft_parrfree((void**)split);
     return (line);
 }
 
