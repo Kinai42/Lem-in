@@ -6,7 +6,7 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 03:00:16 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/08/13 17:41:28 by dbauduin         ###   ########.fr       */
+/*   Updated: 2018/08/14 02:06:29 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,40 +14,43 @@
 
 int				main(void)
 {
-	t_lemin		lemin;
+    t_lemin		lemin;
 
-	lemin.start = 0;
-	lemin.end = 0;
+
+    lemin.start = 0;
+    lemin.end = 0;
     lemin.outAnts = 0;
-	lemin.box = (t_box**)ft_parrnew();
-	lemin.output = ft_strnew(0);
-	if (get_anthill(&lemin))
-		solve(&lemin);
-	return (0);
+    lemin.box = (t_box**)ft_parrnew();
+    lemin.output = ft_strnew();
+    if (get_anthill(&lemin))
+        solve(&lemin);
+    free(lemin.output);
+    while(1);
+    return (0);
 }
 
 t_box		**convert_path(t_lemin *lemin, char **path)
 {
-	t_box	**conv;
-	int		i;
+    t_box	**conv;
+    int		i;
 
-	conv = (t_box**)ft_parrnew();
-	while (*path)
-	{
-		i = 0;
-		while (ft_strcmp(lemin->box[i]->name, *path))
-			i++;
-		ft_parrpush((void***)&conv, lemin->box[i]);
-		path++;
-	}
-	return (conv);
+    conv = (t_box**)ft_parrnew();
+    while (*path)
+    {
+        i = 0;
+        while (ft_strcmp(lemin->box[i]->name, *path))
+            i++;
+        ft_parrpush((void***)&conv, lemin->box[i]);
+        path++;
+    }
+    return (conv);
 }
 
 char		**skip_coms(char **lines)
 {
-	while (*lines && **lines == '#' && *(*lines + 1) != '#')
-		lines++;
-	return (lines);
+    while (*lines && **lines == '#' && *(*lines + 1) != '#')
+        lines++;
+    return (lines);
 }
 
 t_box    *ft_mallocbox(char **split)
@@ -64,8 +67,8 @@ t_box    *ft_mallocbox(char **split)
 
 void ft_free(t_box *box, char **split)
 {
-            free(box->name);
-            ft_parrfree((void **)box->pipes);
-            free(box);
-            ft_parrfree((void **)split);
+    free(box->name);
+    ft_parrfree((void **)box->pipes);
+    free(box);
+    ft_parrfree((void **)split);
 }

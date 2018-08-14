@@ -6,7 +6,7 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 03:00:07 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/08/13 17:40:36 by dbauduin         ###   ########.fr       */
+/*   Updated: 2018/08/14 02:06:36 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static char		check(t_lemin *lemin, char **lines, long offset)
         ft_parrfree((void**)lines);
         return (0);
     }
-
     lemin->nbPaths = ft_parrlen((void**)lemin->start->pipes);
     if (ft_parrlen((void**)lemin->end->pipes) < lemin->nbPaths)
         lemin->nbPaths = ft_parrlen((void**)lemin->end->pipes);
