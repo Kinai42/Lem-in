@@ -6,7 +6,7 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 16:23:20 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/04/14 08:16:09 by Damien           ###   ########.fr       */
+/*   Updated: 2018/09/09 05:46:42 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void			*ft_memchr(const void *s, int c, size_t n);
 void			*ft_memset(void *s, int c, size_t n);
 void			*ft_memalloc(size_t size);
 void			ft_parrfree(void **tab);
-void        	**ft_parrnew(void);
+void			**ft_parrnew(void);
 void			ft_strclr(char *s);
 void			ft_striter(char *s, void (*f)(char *));
 void			ft_striteri(char *s, void (*f)(unsigned int, char *));
@@ -65,11 +65,11 @@ void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-void        	ft_parrpush(void ***tab, void *elem);
+void			ft_parrpush(void ***tab, void *elem);
 void			ft_print(int fd, char *str, ...);
 void			ft_putendl_fd(char const *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
-void        	ft_strspush(char **str, char *push);
+void			ft_strspush(char **str, char *push);
 char			*ft_gnl(int fd);
 char			*ft_strnew();
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
@@ -90,7 +90,8 @@ char			*ft_strresize(char *str, size_t size);
 char			*ft_strrem(char *str, int from, int len);
 char			*ft_strjoini(char const *s1, char const *s2, size_t len);
 char			*ft_strchri(const char *s, int c, unsigned int len);
-char			*ft_itoabase_uns(unsigned long long n, int b, long long *f, char c);
+char			*ft_itoabase_uns(unsigned long long n,
+				int b, long long *f, char c);
 char			*ft_strndup(const char *s1, size_t n);
 char			*ft_ftoa(double floa, long long *f);
 char			**ft_tabcpy(char **tab);
@@ -107,7 +108,7 @@ int				ft_isascii(int c);
 int				ft_isdigit(int c);
 int				ft_isprint(int c);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
-int	    		ft_strpush(char **str, char c);
+int				ft_strpush(char **str, char c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_tolower(int c);
 int				ft_toupper(int c);
@@ -122,7 +123,7 @@ int				ft_freeret(void *p, int r);
 int				ft_charwlen(wchar_t c);
 int				ft_counttab(char **tab);
 int				ft_strwlen(wchar_t *s);
-int	        	ft_strarrstr(char **array, char *str);
+int				ft_strarrstr(char **array, char *str);
 int				ft_isspace(char c);
 int				ft_countwords(char const *s, char c);
 unsigned int	ft_parrlen(void **array);

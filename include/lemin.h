@@ -6,53 +6,44 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 03:01:32 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/08/13 15:33:26 by dbauduin         ###   ########.fr       */
+/*   Updated: 2018/09/09 05:34:27 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEMIN_H
 # define LEMIN_H
 
-#include "libft.h"
+# include "libft.h"
 
-
-typedef struct      s_box
+typedef struct		s_box
 {
 	char			status;
 	char			*name;
 	int				x;
 	int				y;
 	int				ant;
-
-
 	struct s_box	**pipes;
-}                   t_box;
+}					t_box;
 
-typedef struct      s_lemin
+typedef struct		s_lemin
 {
-    t_box           **box;
-
+	t_box			**box;
 	t_box			*start;
-    t_box           *end;
-
-	int				nbAnts;
-    int             outAnts;
-
+	t_box			*end;
+	int				nbants;
+	int				outants;
 	struct s_box	***paths;
-    int             nbPaths;
-    int             min;
-
+	int				nbpaths;
+	int				min;
 	char			*output;
-
-}                   t_lemin;
-
+}					t_lemin;
 
 char				get_anthill(t_lemin *lemin);
 void				solve(t_lemin *lemin);
 void				run(t_lemin *lemin);
 t_box				**convert_path(t_lemin *lemin, char **path);
 char				**skip_coms(char **lines);
-t_box    *ft_mallocbox(char **split);
-void ft_free(t_box *box, char **split);
+t_box				*ft_mallocbox(char **split);
+void				ft_free(t_box *box, char **split);
 
 #endif
