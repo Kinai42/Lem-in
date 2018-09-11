@@ -6,7 +6,7 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 03:00:16 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/09/11 11:56:03 by dbauduin         ###   ########.fr       */
+/*   Updated: 2018/09/11 12:17:04 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,29 +61,6 @@ t_box		*ft_mallocbox(char **split)
 	box->y = ft_atoi(split[2]);
 	box->pipes = (t_box**)ft_parrnew();
 	return (box);
-}
-
-void		ft_free_lemin(t_lemin lemin)
-{
-	int	i;
-	
-	i = -1;
-	while (lemin.box[++i])
-	{
-		free(lemin.box[i]->name);
-		if (lemin.box[i]->pipes)
-			free((void **)lemin.box[i]->pipes);
-		free(lemin.box[i]);
-	}
-	free((void **)lemin.box);
-	i = -1;
-	if (lemin.paths)
-	{
-		while (lemin.paths[++i])
-			free(lemin.paths[i]);
-
-		free(lemin.paths);
-	}
 }
 
 void		ft_free(t_box *box, char **split)

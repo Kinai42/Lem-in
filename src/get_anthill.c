@@ -6,7 +6,7 @@
 /*   By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/09 03:00:07 by dbauduin          #+#    #+#             */
-/*   Updated: 2018/09/09 05:48:23 by dbauduin         ###   ########.fr       */
+/*   Updated: 2018/09/11 12:13:03 by dbauduin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ static char		**get_pipe(t_lemin *lemin, char **line)
 	int		i;
 	int		j;
 
+	split = NULL;
 	while ((line = skip_coms(line)) && *line)
 	{
 		if (ft_strcount(*line, '-') != 1 || ft_parrlen((void**)(split =
@@ -55,12 +56,11 @@ static char		**get_pipe(t_lemin *lemin, char **line)
 		j = -1;
 		while (lemin->box[++j] && ft_strcmp(lemin->box[j]->name, split[1]))
 			;
-		if (!lemin->box[i] || !lemin->box[j])
+		if ((line++) && (!lemin->box[i] || !lemin->box[j]))
 			break ;
 		ft_parrpush((void***)&lemin->box[i]->pipes, lemin->box[j]);
 		ft_parrpush((void***)&lemin->box[j]->pipes, lemin->box[i]);
 		ft_parrfree((void**)split);
-		line++;
 	}
 	if (*line && ft_strcount(*line, '-') == 1)
 		ft_parrfree((void**)split);
@@ -85,6 +85,7 @@ static char		**get_box(t_lemin *lemin, char **line)
 	char		spe;
 
 	line = skip_coms(line);
+	spe = 0;
 	while (*line)
 	{
 		spe = 0;
