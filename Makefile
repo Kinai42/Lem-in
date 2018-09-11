@@ -6,7 +6,7 @@
 #    By: dbauduin <dbauduin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/08/09 02:59:52 by dbauduin          #+#    #+#              #
-#    Updated: 2018/09/11 09:39:34 by dbauduin         ###   ########.fr        #
+#    Updated: 2018/09/11 11:48:42 by dbauduin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,10 @@ obj:
 
 $(NAME): $(OBJ)
 	@make -C libft
-	@gcc $(cc) -Wall -Werror -Wextra -o $(NAME) $(OBJ) libft/libft.a
+	@gcc -Wall -Werror -Wextra -o $(NAME) $(OBJ) libft/libft.a
 
 obj/%.o: src/%.c
-	@gcc $(cc) -Wall -Werror -Wextra -o $@ -c $< -I include/ -I libft/include
+	@gcc -Wall -Werror -Wextra -o $@ -c $< -I include/ -I libft/include
 
 clean:
 	@rm -f $(OBJ_W)
